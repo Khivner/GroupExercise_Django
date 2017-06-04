@@ -1,18 +1,46 @@
-#feed-container{
+.feed-container{
+	background-color: #f4f2f7;
 	width:60%;
+	border-radius: 7px;
+	border: solid #f4f2f7 7px;
 }
 
-.image{
-	width: 30%;
+.row{
+	padding: 3px;
+	border-bottom: solid #bcb1cc 1.5px;
 }
 
-.img-container{
-	width:262px;
+.banner-button{
+	background-color: #b399db;
+	border-radius: 4px;
+
+	width:70px;
+	height:30px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
+	line-height: 30px;
 }
+
+#banner-container{
+	background-color: white;
+	padding:10px;
+}
+
 #title{
 	text-align: center;
 }
 
-.row{
-	border-bottom: solid black 2px;
+.form_container{
+	position: absolute;
+    width:400px;
+    height:120px;
+
+    top: 150px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    margin: 0 auto;
 }

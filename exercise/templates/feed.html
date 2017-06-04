@@ -1,7 +1,13 @@
 {% extends 'exercise_base.html' %}
 
+{% block banner %}
+	<a class="btn btn-primary" href="{% url 'home' %}" role="button">Home</a>
+	<a class="btn btn-primary" href="{% url 'new_post' %}" role="button">New Post</a>
+{% endblock %}
+
 {% block content %}
-	<div id="feed-container" class="container-fluid">
+	<h1 id="title">Exercise Feed</h1>
+	<div class="container-fluid feed-container">
 		{% for post in posts %}
 		<div class="row justify-content-center">
 			<div id="user" class="col-md-2">{{ post.author.username  }}</div>

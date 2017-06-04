@@ -1,19 +1,20 @@
-<html>
-<head>
-	{% load static %}
-	<h1></h1>
-	<link rel="stylesheet" href="{% static 'layout.css' %}">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-</head>
-<body>
-<div id="form_container">
-	{% block content %}
-    <h1>New post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+{% extends 'exercise_base.html' %}
+
+{% block banner %}
+	<a class="btn btn-primary" href="{% url 'home' %}" role="button">Home</a>
+	<a class="btn btn-primary" href="{% url 'feed' %}" role="button">Group Exercise Feed</a>
+{% endblock %}
+
+{% block content %}
+    <h1 id="title">New post</h1>
+   	<div id="newpost" class="form_container">
+	    <form method="POST" class="post-form">{% csrf_token %}
+    	    {{ form.as_p }}
+        	<button type="submit" class="save btn btn-default">Save</button>
+    	</form>
+    </div>
 {% endblock %}
 </div>
 </body>
 </html>
+
