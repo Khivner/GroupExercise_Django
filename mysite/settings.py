@@ -128,5 +128,5 @@ STATIC_DIRS = [os.path.join(BASE_DIR, 'mysite\\', 'static'),]
 
 LOGIN_REDIRECT_URL = 'home'
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
