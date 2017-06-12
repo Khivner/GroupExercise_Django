@@ -1,0 +1,19 @@
+{% extends 'exercise_base.html' %}
+
+{% block banner %}
+	<a class="btn btn-primary" href="{% url 'home' %}" role="button">Home</a>
+	<a class="btn btn-primary" href="{% url 'feed' %}" role="button">Group Exercise Feed</a>
+{% endblock %}
+
+{% block content %}
+    <h1 id="title">New Group</h1>
+   	<div id="newpost" class="form_container">
+	    <form method="POST" class="post-form">{% csrf_token %}
+    	    {{ form.as_p }}
+        	<button type="submit" class="save btn btn-default">Save</button>
+    	</form>
+    </div>
+{% endblock %}
+</div>
+</body>
+</html>

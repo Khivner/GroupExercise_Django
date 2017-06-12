@@ -7,4 +7,15 @@
 
 {% block content %}
 <h1 id="title">HOME PAGE SON!</h1>
+<div>
+	<h2>Your Groups</h2>
+	<div id='Groups'>
+		{% for group in grouplist %}
+			<h3>{{group}}</h3>
+		{% endfor %}
+		<a class="btn btn-warning" href="{% url 'create_group' %}" role="button">Create Group</a>
+		<a class="btn btn-warning" href="{% url 'join_group' %}" role="button">Join Groups</a>
+	</div>
+</div>
+<div></div>
 {% endblock %}
