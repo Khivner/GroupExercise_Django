@@ -1,17 +1,16 @@
-{% extends 'exercise_base.html' %}
+{% extends 'create_base.html' %}
 
 {% block banner %}
-	<a class="btn btn-primary" href="{% url 'home' %}" role="button">Home</a>
-	<a class="btn btn-primary" href="{% url 'feed' %}" role="button">Group Exercise Feed</a>
+    <li><a href="{% url 'new_post' %}">Create Post</a></li>
 {% endblock %}
 
 {% block content %}
-    <h1 id="title">Join Groups</h1>
+    <h2 id="title">Join Groups</h2>
    	<div id="newpost" class="form_container">
    		<form method="POST" class="post-form">
    			{% csrf_token %}
 	    	{{form.as_p}}
-	    	<button type="submit" class="save btn btn-default">Save</button>
+	    	<button type="submit" class="btn btn-primary indent">Save</button>
     	</form>
     </div>
 {% endblock %}

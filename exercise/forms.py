@@ -18,7 +18,3 @@ class MakeGroupForm(forms.ModelForm):
 
 class JoinGroupForm(forms.Form):
 	form = forms.ModelMultipleChoiceField(queryset=Group.objects.all().order_by('name'), label='Group')
-
-	class Meta:
-		model = User
-		fields = ('groups',)

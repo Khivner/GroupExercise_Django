@@ -1,21 +1,140 @@
-{% extends 'exercise_base.html' %}
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Exercise Groups App</title>
 
-{% block banner %}
-	<a class="btn btn-primary" href="{% url 'feed' %}" role="button">Group Exercise Feed</a>
-	<a class="btn btn-primary" href="{% url 'new_post' %}" role="button">New Post</a>
-{% endblock %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-{% block content %}
-<h1 id="title">HOME PAGE SON!</h1>
-<div>
-	<h2>Your Groups</h2>
-	<div id='Groups'>
-		{% for group in grouplist %}
-			<h3>{{group}}</h3>
-		{% endfor %}
-		<a class="btn btn-warning" href="{% url 'create_group' %}" role="button">Create Group</a>
-		<a class="btn btn-warning" href="{% url 'join_group' %}" role="button">Join Groups</a>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slider.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/superfish.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+<!--
+deiform, a free CSS web template by ZyPOP (zypopwebtemplates.com/)
+
+Download: http://zypopwebtemplates.com/
+
+License: Creative Commons Attribution
+//-->
+</head>
+<body>
+<div id="container" class="width">
+
+    <header> 
+	<div class="width">
+
+    		<h1><a href="/">My Exercise Groups</a></h1>
+
+		<nav>
+	
+    			<ul class="sf-menu dropdown">
+
+			
+        			<li class="selected"><a href="{% url 'home' %}">Home</a></li>
+
+            			<li>
+                        <a href="#">My Groups</a>
+					<ul>
+                        <li><a href="{% url 'join_group' %}">+ Join Group</a></li>
+                        <li><a href="{% url 'create_group' %}">+ New Group</a></li>
+                		{% for group in grouplist %}
+                            <li><a href="{% url 'home' %}?id={{group}}">{{group}}</a></li>
+                        {% endfor %}
+                	</ul>
+
+            		</li>
+
+	     			<li><a href="{% url 'new_post' %}">Create Post</a></li>
+        
+				<li>
+                    <a href="{% url 'logout' %}">Log Out</a>
+                </li>
+       			</ul>
+
+			
+			<div class="clear"></div>
+    		</nav>
+       	</div>
+
+	<div class="clear"></div>
+
+       
+    </header>
+
+
+    <div id="intro">
+
+	   <div class="width">
+	        <div class="intro-content">
+                {% if groupid != None %}
+                    <h2>Group Feed: {{groupid}}</h2>
+                {% else %}
+                    <h2>Welcome {{request.user.username}}</h2>
+                {% endif %}
+            </div>    
+        </div>
 	</div>
+
+    <div id="body" class="width">
+		<section id="content" class="two-column with-right-sidebar">
+
+	    <article>
+				
+			
+			<h2>Recent Workout Posts</h2>
+            {% for post in posts %}
+			<div class="article-info">Posted on {{ post.created_date }} by {{ post.author.username  }}
+            </div>
+            <p class="indent">-{{ post.exercise }} 
+                {% if post.weight != None %}
+                    , weight: {{post.weight}} lbs
+                {% endif %}
+                {% if post.reps != None %}
+                    , {{post.reps}} reps
+                {% endif %}
+            </p>
+            {% endfor %}
+
+	
+		</article>
+        </section>
+        
+        <aside class="sidebar big-sidebar right-sidebar">
+	
+	
+            <ul>	
+               <li>
+                    <ul class="blocklist">
+                        <li><h4>My Groups</h4>
+				            <ul>
+                            {% for group in grouplist %}
+                            <li><a href="{% url 'home' %}?id={{group}}">{{group}}</a></li>
+                            {% endfor %}
+				            </ul>
+			            </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+    	
+        <div class="clear"></div>
+    </div>
 </div>
-<div></div>
-{% endblock %}
+
+    <footer>
+        <div class="footer-content width">This page was created using a template from  <a href="http://zypopwebtemplates.com/" title="ZyPOP">http://zypopwebtemplates.com/</a>.</div>
+    </footer>
+</body>
+</html>
